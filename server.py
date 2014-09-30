@@ -4,6 +4,7 @@
 
 import bluetooth
 import uuid
+import traceback
 
 
 
@@ -12,9 +13,10 @@ def getDictFromString (strInput):
     myList = strInput.split(";")
     myDict = {}
     for el in myList:
-        key = el.split ("=")[0];
-        value = el.split ("=")[1];
-        myDict[key] = value
+        if ('=' in el):
+            key = el.split ("=")[0];
+            value = el.split ("=")[1];
+            myDict[key] = value
         
     return myDict
 
@@ -25,7 +27,7 @@ def writeToFile (myDict, filein, fileout):
     in_file.close()
     
     for key in myDict.iterkeys():
-        text = text.replace(key, myDict[key])
+        text = text.replace("$" + key, myDict[key])
         
     # Scrive un file.
     out_file = open(fileout,"w")
@@ -72,6 +74,7 @@ while True:
         ris = getDictFromString (strInput)
         writeToFile (ris, "temp", str(uuid.uuid1()) + ".txt")
     except Exception,e:
+        traceback.print_exc()
         print str(e)
         print 'Errore inaspettato'
     

@@ -6,8 +6,8 @@
  Nr: $carta\r
  Totale: $totale\r
 
- Data: 26/08/1986\r
- Ora:  10:00\r
+ Data: $data\r
+ Ora:  $ora\r
 \r
 LA TRANSAZIONE E' STATA
 ESEGUITA CON SUCCESSO.\r
