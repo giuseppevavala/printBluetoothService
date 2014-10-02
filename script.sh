@@ -10,7 +10,7 @@ else
 			if [ $f != "*.txt" ]
 			then
                 		echo `date`: "Stampando file $f"
-	                	echo -e `cat $f` > /dev/usb/lp1
+	                	echo -e `cat $f` > $1
 	        	        rm -fr $f
 			fi
 	        done
